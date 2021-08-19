@@ -25,6 +25,8 @@ public class Lecture_6 {
         Assert.assertTrue(driver.findElement(By.tagName("h3")).isDisplayed());
         Assert.assertEquals(driver.findElement(By.tagName("h3")).isDisplayed(), true);
         Assert.assertTrue(driver.findElement(By.tagName("h3")).isDisplayed());
+        Assert.assertEquals(driver.findElement(By.tagName("h3")).isDisplayed(), true);
+        Assert.assertTrue(driver.findElement(By.tagName("h3")).isDisplayed());
     }
 
     @AfterTest
