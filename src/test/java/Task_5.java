@@ -10,7 +10,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -26,33 +25,23 @@ public class Task_5 {
     }
 
     @Test(dataProvider = "dataProvider")
-    public void test_1(HashMap<String, Integer> dataProvider, List<String> expectedData) {
+    public void test(HashMap<String, Integer> map, List<String> expectedResult) {
         driver.get("https://masterskayapola.ru/kalkulyator/laminata.html");
-        dataProvider.forEach((key, value) -> {
-            if (!key.equals("select_index")) {
-                enter(key, value);
-            } else {
-                select().selectByIndex(value);
+        map.forEach((key, value) -> {
+            switch (key) {
+                case "select":
+                    select().selectByIndex(value);
+                    break;
+                default:
+                    enter(key, value);
             }
         });
         calculate();
-        Assert.assertEquals(expectedData, getCalculateData());
-    }
-
-    @Test
-    public void test3() {
-        String l = "1,2,3,0,-1,10,11,-20,40";
-        List<Integer> list = new ArrayList<>() {{
-            addAll(Arrays.stream(l.split(",")).map(Integer::parseInt).collect(Collectors.toList()));
-        }};
-        System.out.println(list.stream().filter(d -> d > 0).collect(Collectors.toList()));
-        System.out.println(list.stream().filter(d -> d < 0).collect(Collectors.toList()));
-        System.out.println(list.stream().filter(d -> d % 5 == 0).collect(Collectors.toList()));
-        System.out.println(list.stream().filter(d -> d % 10 == 0).collect(Collectors.toList()));
+        Assert.assertEquals(getCalculateData(), expectedResult);
     }
 
     @DataProvider
-    private Object[][] dataProvider() {
+    public Object[][] dataProvider() {
         return new Object[][]{
                 {
                         new HashMap<String, Integer>() {{
@@ -64,7 +53,8 @@ public class Task_5 {
                             put("calc_price", 60);
                             put("calc_bias", 7);
                             put("calc_walldist", 8);
-                            put("select_index", 1);
+                            put("select", 1);
+
                         }},
                         Arrays.asList("РЕЗУЛЬТАТ РАСЧЕТА:", "Площадь укладки: 1.95 м2.", "Кол-во панелей: 200 шт.", "Кол-во упаковок: 40 шт.", "Стоимость: 128 руб.", "Остатки: 0 шт.", "Отрезки: 8 шт.")
                 },
@@ -78,7 +68,8 @@ public class Task_5 {
                             put("calc_price", 70);
                             put("calc_bias", 8);
                             put("calc_walldist", 9);
-                            put("select_index", 0);
+                            put("select", 0);
+
                         }},
                         Arrays.asList("РЕЗУЛЬТАТ РАСЧЕТА:", "Площадь укладки: 5.91 м2.", "Кол-во панелей: 580 шт.", "Кол-во упаковок: 97 шт.", "Стоимость: 444 руб.", "Остатки: 2 шт.", "Отрезки: 27 шт.")
                 },
@@ -92,20 +83,19 @@ public class Task_5 {
                             put("calc_price", 80);
                             put("calc_bias", 9);
                             put("calc_walldist", 10);
-                            put("select_index", 1);
+                            put("select", 1);
                         }},
                         Arrays.asList("РЕЗУЛЬТАТ РАСЧЕТА:", "Площадь укладки: 11.86 м2.", "Кол-во панелей: 1102 шт.", "Кол-во упаковок: 158 шт.", "Стоимость: 984 руб.", "Остатки: 4 шт.", "Отрезки: 27 шт.")
-                },
+                }
         };
     }
 
-
-    /**
-     * @param element - input locator
+    /* @param element - input locator
      * @param value   - enter value
      */
     private void enter(String element, Integer value) {
-        driver.findElement(By.name(element)).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE), value.toString(), Keys.ENTER);
+        WebElement webElement = driver.findElement(By.xpath("//input[@name = '" + element + "']"));
+        webElement.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE), value.toString(), Keys.ENTER);
     }
 
     /**
