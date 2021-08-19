@@ -54,6 +54,7 @@ public class Task_5 {
                             put("calc_bias", 7);
                             put("calc_walldist", 8);
                             put("select", 1);
+
                         }},
                         Arrays.asList("РЕЗУЛЬТАТ РАСЧЕТА:", "Площадь укладки: 1.95 м2.", "Кол-во панелей: 200 шт.", "Кол-во упаковок: 40 шт.", "Стоимость: 128 руб.", "Остатки: 0 шт.", "Отрезки: 8 шт.")
                 },
@@ -68,6 +69,7 @@ public class Task_5 {
                             put("calc_bias", 8);
                             put("calc_walldist", 9);
                             put("select", 0);
+
                         }},
                         Arrays.asList("РЕЗУЛЬТАТ РАСЧЕТА:", "Площадь укладки: 5.91 м2.", "Кол-во панелей: 580 шт.", "Кол-во упаковок: 97 шт.", "Стоимость: 444 руб.", "Остатки: 2 шт.", "Отрезки: 27 шт.")
                 },
@@ -87,7 +89,6 @@ public class Task_5 {
                 }
         };
     }
-
 
     /* @param element - input locator
      * @param value   - enter value
@@ -128,6 +129,4 @@ public class Task_5 {
     public void postconditions() {
         driver.quit();
     }
-
-
 }
