@@ -1,2 +1,2 @@
-# AutomationProject-Shadrin-Vitali-
+# AutomationProject-Shadrin-Vitali
 Automation Project
