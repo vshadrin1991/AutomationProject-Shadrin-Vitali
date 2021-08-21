@@ -1,11 +1,12 @@
+package Lecture_5;
+
+import driver.DriverCreation;
+import driver.DriverExecutor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -15,25 +16,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Task_5 {
-    private static WebDriver driver;
+public class Task_5 extends DriverExecutor {
 
     @BeforeTest
-    public void preconditions() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+    public void pre(){
+        DriverCreation.getDriver().get("https://masterskayapola.ru/kalkulyator/laminata.html");
     }
+
 
     @Test(dataProvider = "dataProvider")
     public void test(HashMap<String, Integer> map, List<String> expectedResult) {
-        driver.get("https://masterskayapola.ru/kalkulyator/laminata.html");
         map.forEach((key, value) -> {
-            switch (key) {
-                case "select":
-                    select().selectByIndex(value);
-                    break;
-                default:
-                    enter(key, value);
+            if ("select".equals(key)) {
+                select().selectByIndex(value);
+            } else {
+                enter(key, value);
             }
         });
         calculate();
@@ -123,10 +120,5 @@ public class Task_5 {
      */
     private List<String> getCalculateData() {
         return driver.findElements(By.cssSelector("div[class*='whiteback']>div")).stream().map(WebElement::getText).collect(Collectors.toList());
-    }
-
-    @AfterTest
-    public void postconditions() {
-        driver.quit();
     }
 }
