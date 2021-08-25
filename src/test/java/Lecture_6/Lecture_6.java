@@ -24,6 +24,7 @@ public class Lecture_6 {
         driver.findElement(By.name("password")).clear();
         driver.findElement(By.cssSelector("input.submit-button.btn_action")).click();
         Assert.assertTrue(driver.findElement(By.tagName("h3")).isDisplayed());
+
     }
 
     @AfterTest
