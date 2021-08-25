@@ -8,9 +8,11 @@ import org.testng.annotations.Test;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class JsonPOJO {
+import static org.testng.Assert.assertEquals;
 
-    //@Test
+public class Lecture_8 {
+
+    @Test
     public void test1() throws Exception {
         Gson gson = new Gson();
         String json = readFileAsString();
@@ -21,7 +23,6 @@ public class JsonPOJO {
         System.out.println(jsonObject.get("contents").getAsJsonArray().get(1).getAsJsonObject().get("productID"));
     }
 
-
     @Test
     public void test2() throws Exception {
         Gson gson = new Gson();
@@ -31,6 +32,15 @@ public class JsonPOJO {
         System.out.println(user.getOrderID());
         System.out.println(user.getContents().get(0).getProductID());
         System.out.println(user.getContents().get(1).getProductID());
+    }
+
+    @Test
+    public void test3() throws Exception {
+        Gson gson = new Gson();
+        String json = readFileAsString();
+        User user = gson.fromJson(json, User.class);
+        JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
+        assertEquals(user.getOrderID().doubleValue(), jsonObject.get("orderID").getAsDouble());
     }
 
     public static String readFileAsString() throws Exception {

@@ -3,13 +3,13 @@ package jsonPojo;
 import java.util.List;
 
 public class User {
-    String orderID;
+    Double orderID;
     String shopperName;
     String shopperEmail;
     List<Contents> contents;
     Boolean orderCompleted;
 
-    public String getOrderID() {
+    public Double getOrderID() {
         return orderID;
     }
 
