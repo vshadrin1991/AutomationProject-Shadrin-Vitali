@@ -2,15 +2,22 @@ package Lecture_8;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import driver.DriverExecutor;
 import jsonPojo.User;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.testng.Assert.assertEquals;
 
-public class Lecture_8 {
+public class Lecture_8 extends DriverExecutor {
 
     @Test
     public void test1() throws Exception {
@@ -41,6 +48,19 @@ public class Lecture_8 {
         User user = gson.fromJson(json, User.class);
         JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
         assertEquals(user.getOrderID().doubleValue(), jsonObject.get("orderID").getAsDouble());
+    }
+
+    @Test
+    public void test4() {
+        driver.get(System.getProperty("user.dir") + "/src/test/java/Lecture_8/html/table.html");
+        List<WebElement> headers = driver.findElements(By.xpath("//table//th"));
+        Map<String, List<String>> data = new HashMap<>() {{
+            for (int i = 0; i < headers.size(); i++) {
+                List<WebElement> columns = driver.findElements(By.xpath("//table//tr//following::tr/td[" + (i + 1) + "]"));
+                put(headers.get(i).getText(), columns.stream().map(data -> data.getText()).collect(Collectors.toList()));
+            }
+        }};
+        data.forEach((k, v) -> System.out.println(k + " --> " + v));
     }
 
     public static String readFileAsString() throws Exception {
