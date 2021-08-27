@@ -1,6 +1,6 @@
 package PageFactory;
 
-import driver.BasePage;
+import PageObject.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,12 +18,11 @@ public class LoginPage extends BasePage {
     WebElement loginBtn;
 
     public LoginPage(WebDriver driver) {
-        super(driver);
         initElements(driver, this);
     }
 
     public LoginPage openPage() {
-        driver.get("https://www.saucedemo.com/");
+        open("https://www.saucedemo.com/");
         return this;
     }
 
