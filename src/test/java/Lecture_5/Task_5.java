@@ -1,7 +1,7 @@
 package Lecture_5;
 
 import driver.DriverCreation;
-import driver.DriverExecutor;
+import driver.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Task_5 extends DriverExecutor {
+public class Task_5 extends BaseTest {
 
     @BeforeTest
     public void pre(){

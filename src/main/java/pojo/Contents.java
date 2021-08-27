@@ -1,4 +1,4 @@
-package jsonPojo;
+package pojo;
 
 public class Contents {
     String contents;

@@ -1,4 +1,4 @@
-package jsonPojo;
+package pojo;
 
 import java.util.List;
 
