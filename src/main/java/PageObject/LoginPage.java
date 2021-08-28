@@ -1,15 +1,18 @@
 package PageObject;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-
-import static driver.DriverCreation.getDriver;
 
 public class LoginPage extends BasePage {
     private By username = By.cssSelector("[data-test=username]");
     private By password = By.cssSelector("[data-test=password]");
     private By loginBtn = By.cssSelector("[data-test=login-button]");
     private By errorTxt = By.cssSelector("[data-test=error]");
+
+    public LoginPage(WebDriver driver) {
+        super(driver);
+    }
 
     public LoginPage verifyLoginPage() {
         isDisplayed(username, password, loginBtn);

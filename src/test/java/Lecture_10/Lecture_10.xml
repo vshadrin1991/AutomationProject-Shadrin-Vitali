@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture 10" parallel="true" thread-count="1">
+    <test name="Before After" enabled="false">
+        <groups>
+            <run>
+                <include name="Lecture_10"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="Lecture_10.BeforeAfter"/>
+        </classes>
+    </test>
+    <test name="Annotation Options" enabled="false">
+        <classes>
+            <class name="Lecture_10.AnnotationOptions"/>
+        </classes>
+    </test>
+    <test name="DataProvider and Parameters" enabled="false">
+        <parameter name="login" value="username"/>
+        <classes>
+            <class name="Lecture_10.DataProviderParameters"/>
+        </classes>
+    </test>
+    <test name="Listener">
+        <classes>
+            <class name="Lecture_10.Listener"/>
+        </classes>
+    </test>
+</suite>

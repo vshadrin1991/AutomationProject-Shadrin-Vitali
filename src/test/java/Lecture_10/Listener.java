@@ -1,14 +1,25 @@
-package Lecture_9;
+package Lecture_10;
 
 import PageObject.LoginPage;
 import PageObject.ProductPage;
-import driver.BaseTest;
+import driver.SetUpTearDown;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-public class Lecture_9 extends BaseTest {
-    LoginPage loginPage = new LoginPage(driver);
-    ProductPage productPage = new ProductPage(driver);
+import static driver.SetUpTearDown.driver;
+
+@Listeners(SetUpTearDown.class)
+public class Listener {
+    LoginPage loginPage;
+    ProductPage productPage;
+
+    @BeforeClass
+    public void preconditions() {
+        loginPage = new LoginPage(driver);
+        productPage = new ProductPage(driver);
+    }
 
     @BeforeMethod
     public void precondition() {
