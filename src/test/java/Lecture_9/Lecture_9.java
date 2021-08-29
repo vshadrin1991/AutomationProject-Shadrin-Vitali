@@ -1,17 +1,19 @@
 package Lecture_9;
 
-import PageObject.LoginPage;
-import PageObject.ProductPage;
+import PageObjects.saucedemo.LoginPage;
+import PageObjects.saucedemo.ProductPage;
 import driver.BaseTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class Lecture_9 extends BaseTest {
-    LoginPage loginPage = new LoginPage();
-    ProductPage productPage = new ProductPage();
+    LoginPage loginPage;
+    ProductPage productPage;
 
     @BeforeMethod
     public void precondition() {
+        loginPage = new LoginPage(driver);
+        productPage = new ProductPage(driver);
         loginPage.openPage();
     }
 
