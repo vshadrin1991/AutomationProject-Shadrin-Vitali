@@ -1,7 +1,7 @@
 package PageObjects.saucedemo.BarMenu;
 
 
-import PageObject.BasePage;
+import PageObjects.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
