@@ -4,9 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import static driver.DriverCreation.getDriver;
-
 public class BasePage {
+    WebDriver driver;
+
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
+    }
+
     protected WebDriver driver;
 
     public BasePage(WebDriver driver) {
@@ -14,29 +18,29 @@ public class BasePage {
     }
 
     protected void enter(By element, CharSequence... charSequences) {
-        getDriver().findElement(element).clear();
-        getDriver().findElement(element).sendKeys(charSequences);
+        driver.findElement(element).clear();
+        driver.findElement(element).sendKeys(charSequences);
     }
 
     protected void click(By element) {
-        getDriver().findElement(element).click();
+        driver.findElement(element).click();
     }
 
     protected void open(String url) {
-        getDriver().get(url);
+        driver.get(url);
     }
 
     protected String getElementText(By element) {
-        return getDriver().findElement(element).getText();
+        return driver.findElement(element).getText();
     }
 
     protected Integer getCountElements(By element) {
-        return getDriver().findElements(element).size();
+        return driver.findElements(element).size();
     }
 
     protected void isDisplayed(By... elements) {
         for (By element : elements) {
-            Assert.assertTrue(getDriver().findElement(element).isDisplayed(), "Element :: " + elements + " is not exist.");
+            Assert.assertTrue(driver.findElement(element).isDisplayed(), "Element :: " + elements + " is not exist.");
         }
     }
 
