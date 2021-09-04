@@ -5,15 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class BasePage {
-    WebDriver driver;
+    private WebDriver driver;
 
-    public BasePage(WebDriver driver) {
-        this.driver = driver;
-    }
-
-    protected WebDriver driver;
-
-    public BasePage(WebDriver driver) {
+    protected BasePage(WebDriver driver) {
         this.driver = driver;
     }
 
