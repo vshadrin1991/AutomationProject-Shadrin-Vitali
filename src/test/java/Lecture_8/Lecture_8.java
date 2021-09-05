@@ -3,10 +3,10 @@ package Lecture_8;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import driver.BaseTest;
-import pojo.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+import pojo.User;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;

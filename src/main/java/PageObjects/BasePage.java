@@ -56,7 +56,7 @@ public class BasePage {
         }
     }
 
-    protected WebElement find(By by){
+    protected WebElement find(By by) {
         return driver.findElement(by);
     }
 
@@ -66,6 +66,10 @@ public class BasePage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    protected void switchToFrame(By element) {
+        driver.switchTo().frame(driver.findElement(element));
     }
 
 

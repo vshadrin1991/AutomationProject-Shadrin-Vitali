@@ -14,7 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Comparator;
 
-import static driver.DriverCreation.*;
+import static driver.DriverCreation.getDriver;
 
 
 public class Listener implements ITestListener {
@@ -40,7 +40,7 @@ public class Listener implements ITestListener {
 
 
     @Attachment(value = "Screenshots", type = "image/png")
-    private byte[] saveScreenshots(byte[] s){
+    private byte[] saveScreenshots(byte[] s) {
         return s;
     }
 

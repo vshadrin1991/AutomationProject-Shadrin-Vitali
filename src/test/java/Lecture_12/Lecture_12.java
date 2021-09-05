@@ -1,9 +1,7 @@
 package Lecture_12;
 
 
-import PageObjects.herokuapp.ContextMenuPage;
-import PageObjects.herokuapp.DynamicControlsPage;
-import PageObjects.herokuapp.HomePage;
+import PageObjects.herokuapp.*;
 import driver.BaseTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -15,12 +13,18 @@ public class Lecture_12 extends BaseTest {
     HomePage homePage;
     ContextMenuPage contextMenuPage;
     DynamicControlsPage dynamicControlsPage;
+    FileUploaderPage fileUploaderPage;
+    FramesPage framesPage;
+    DownloaderPage downloaderPage;
 
     @BeforeClass
     public void initialization() {
         homePage = new HomePage(driver);
         contextMenuPage = new ContextMenuPage(driver);
         dynamicControlsPage = new DynamicControlsPage(driver);
+        fileUploaderPage = new FileUploaderPage(driver);
+        framesPage = new FramesPage(driver);
+        downloaderPage = new DownloaderPage(driver);
     }
 
     @BeforeMethod
@@ -46,7 +50,27 @@ public class Lecture_12 extends BaseTest {
     @Test(priority = 3)
     public void fileUploader_Test() {
         homePage.clickOnExample(FILE_UPLOAD);
+        fileUploaderPage
+                //.dragUploadFile("hello-world.jpg")
+                //.verifyFileUpload("hello-world.jpg")
+                .uploadFile("hello-world.jpg")
+                .clickFileSubmit()
+                .verifyFileUploaded("hello-world.jpg");
     }
 
+    @Test(priority = 4)
+    public void framePage_Test() {
+        homePage.clickOnExample(FRAMES);
+        framesPage
+                .clickFrameLink(FramesPage.Frame.iFrame)
+                .verifyFrameText("Your content goes here.");
+    }
 
+    @Test(priority = 5)
+    public void downloaderPage_Test() {
+        homePage.clickOnExample(FILE_DOWNLOAD);
+        downloaderPage
+                .downloadFile("28.jpg")
+                .checkFileDownload("28.jpg");
+    }
 }

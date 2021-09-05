@@ -1,7 +1,7 @@
 package Lecture_5;
 
-import driver.DriverCreation;
 import driver.BaseTest;
+import driver.DriverCreation;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class Task_5 extends BaseTest {
 
     @BeforeTest
-    public void pre(){
+    public void pre() {
         DriverCreation.getDriver().get("https://masterskayapola.ru/kalkulyator/laminata.html");
     }
 
