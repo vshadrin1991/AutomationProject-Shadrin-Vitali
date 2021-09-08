@@ -10,7 +10,7 @@ import static driver.DriverCreation.quitDriver;
 
 @Listeners(Listener.class)
 public class BaseTest {
-    public WebDriver driver;
+    public static WebDriver driver;
 
     @BeforeTest
     public void setupDriver() {

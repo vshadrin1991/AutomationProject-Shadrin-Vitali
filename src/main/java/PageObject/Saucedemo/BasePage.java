@@ -8,12 +8,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class BasePage {
-    protected WebDriver driver = DriverCreation.getDriver();
-    protected WebDriverWait wait = new WebDriverWait(DriverCreation.getDriver(), 5);
-    protected Actions actions = new Actions(DriverCreation.getDriver());
+    protected WebDriver driver;
+    protected WebDriverWait wait;
+    protected Actions actions;
 
     protected BasePage(WebDriver driver) {
-        //this.driver = driver;
+        this.driver = driver;
+        wait = new WebDriverWait(DriverCreation.getDriver(), 5);
+        actions = new Actions(DriverCreation.getDriver());
     }
 
     protected void enter(By element, CharSequence... charSequences) {
