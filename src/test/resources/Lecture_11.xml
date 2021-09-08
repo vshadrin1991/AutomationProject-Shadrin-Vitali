@@ -3,6 +3,11 @@
 <suite name="Lecture 11">
     <test name="Standard user">
         <classes>
+            <class name="Lecture_10.Lecture_10_3">
+                <methods>
+                    <include name="loginToApplicationStandard_Test"/>
+                </methods>
+            </class>
             <class name="Lecture_11.Lecture_11"></class>
         </classes>
     </test>

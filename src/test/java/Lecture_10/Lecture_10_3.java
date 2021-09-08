@@ -1,7 +1,7 @@
 package Lecture_10;
 
-import PageObject.LoginPage;
-import PageObject.ProductPage;
+import PageObject.Saucedemo.LoginPage;
+import PageObject.Saucedemo.ProductPage;
 import driver.BaseTest;
 import driver.Listener;
 import driver.Retry;
@@ -9,8 +9,14 @@ import org.testng.annotations.*;
 
 @Listeners({Listener.class})
 public class Lecture_10_3 extends BaseTest {
-    LoginPage loginPage = new LoginPage(driver);
-    ProductPage productPage = new ProductPage(driver);
+    LoginPage loginPage;
+    ProductPage productPage;
+
+    @BeforeClass
+    public void pre() {
+        loginPage = new LoginPage(driver);
+        productPage = new ProductPage(driver);
+    }
 
     @BeforeMethod
     public void precondition() {

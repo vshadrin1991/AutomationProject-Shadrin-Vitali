@@ -1,9 +1,9 @@
 package Lecture_11;
 
-import PageObject.BarMenu.BarMenuPage;
-import PageObject.BarMenu.LinksEnum;
-import PageObject.LoginPage;
-import PageObject.ProductPage;
+import PageObject.Saucedemo.BarMenu.BarMenuPage;
+import PageObject.Saucedemo.BarMenu.LinksEnum;
+import PageObject.Saucedemo.LoginPage;
+import PageObject.Saucedemo.ProductPage;
 import driver.BaseTest;
 import io.qameta.allure.*;
 import org.testng.annotations.BeforeClass;
@@ -21,7 +21,7 @@ public class Lecture_11 extends BaseTest {
         loginPage = new LoginPage(driver);
         productPage = new ProductPage(driver);
         barMenuPage = new BarMenuPage(driver);
-        loginPage.openPage();
+       // loginPage.openPage();
     }
 
     @Parameters({"username", "password", "error"})

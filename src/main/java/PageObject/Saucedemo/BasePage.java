@@ -1,14 +1,19 @@
-package PageObject;
+package PageObject.Saucedemo;
 
+import driver.DriverCreation;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class BasePage {
-    private WebDriver driver;
+    protected WebDriver driver = DriverCreation.getDriver();
+    protected WebDriverWait wait = new WebDriverWait(DriverCreation.getDriver(), 5);
+    protected Actions actions = new Actions(DriverCreation.getDriver());
 
     protected BasePage(WebDriver driver) {
-        this.driver = driver;
+        //this.driver = driver;
     }
 
     protected void enter(By element, CharSequence... charSequences) {
@@ -34,7 +39,15 @@ public class BasePage {
 
     protected void isDisplayed(By... elements) {
         for (By element : elements) {
-            Assert.assertTrue(driver.findElement(element).isDisplayed(), "Element :: " + elements + " is not exist.");
+            Assert.assertFalse(driver.findElements(element).isEmpty(), "Element :: " + elements + " is not exist.");
+        }
+    }
+
+    public void pause(Integer seconds) {
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 

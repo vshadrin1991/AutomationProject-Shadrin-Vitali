@@ -1,4 +1,4 @@
-package PageObject.BarMenu;
+package PageObject.Saucedemo.BarMenu;
 
 import org.openqa.selenium.By;
 

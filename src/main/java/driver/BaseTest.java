@@ -16,9 +16,4 @@ public class BaseTest {
     public void setupDriver() {
         driver = getDriver();
     }
-
-    @AfterTest
-    public void closeDriver() {
-        quitDriver();
-    }
 }

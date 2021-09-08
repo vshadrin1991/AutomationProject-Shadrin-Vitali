@@ -38,6 +38,10 @@ public class Listener implements ITestListener {
         }
     }
 
+    @Override
+    public void onFinish(ITestContext context) {
+        DriverCreation.quitDriver();
+    }
 
     @Attachment(value = "Screenshots", type = "image/png")
     private byte[] saveScreenshots(byte[] s){
