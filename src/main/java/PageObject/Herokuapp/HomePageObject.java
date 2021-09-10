@@ -1,6 +1,6 @@
 package PageObject.Herokuapp;
 
-import PageObject.Saucedemo.BasePage;
+import PageObject.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -22,8 +22,8 @@ public class HomePageObject extends BasePage {
         super(driver);
     }
 
-    public HomePageObject open() {
-        open("http://the-internet.herokuapp.com/");
+    public HomePageObject openPage() {
+        open();
         return this;
     }
 

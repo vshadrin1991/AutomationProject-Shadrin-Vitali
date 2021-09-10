@@ -1,4 +1,4 @@
-package PageObject.Saucedemo;
+package PageObject;
 
 import driver.DriverCreation;
 import org.openqa.selenium.By;
@@ -6,16 +6,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import properties.PropertyReader;
+
+import java.util.Properties;
 
 public class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected Actions actions;
+    protected Properties properties;
 
     protected BasePage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(DriverCreation.getDriver(), 5);
         actions = new Actions(DriverCreation.getDriver());
+        properties = PropertyReader.getProperties();
     }
 
     protected void enter(By element, CharSequence... charSequences) {
@@ -25,6 +30,10 @@ public class BasePage {
 
     protected void click(By element) {
         driver.findElement(element).click();
+    }
+
+    protected void open(){
+        driver.get(properties.getProperty("url"));
     }
 
     protected void open(String url) {
@@ -52,5 +61,4 @@ public class BasePage {
             e.printStackTrace();
         }
     }
-
 }

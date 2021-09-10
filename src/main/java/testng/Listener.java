@@ -1,11 +1,13 @@
-package driver;
+package testng;
 
+import driver.DriverCreation;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import properties.PropertyReader;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,6 +29,8 @@ public class Listener implements ITestListener {
 
     @Override
     public void onStart(ITestContext context) {
+        PropertyReader propertyReader = new PropertyReader();
+        propertyReader.setProperties(context.getSuite().getParameter("env"));
         Path path = Paths.get("allure-results");
         try {
             Files.walk(path)

@@ -3,8 +3,8 @@ package Lecture_10;
 import PageObject.Saucedemo.LoginPage;
 import PageObject.Saucedemo.ProductPage;
 import driver.BaseTest;
-import driver.Listener;
-import driver.Retry;
+import testng.Listener;
+import testng.Retry;
 import org.testng.annotations.*;
 
 @Listeners({Listener.class})
