@@ -3,6 +3,8 @@ package PageObject;
 import driver.DriverCreation;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -22,7 +24,6 @@ public class BasePage {
         actions = new Actions(DriverCreation.getDriver());
         properties = PropertyReader.getProperties();
     }
-
     protected void enter(By element, CharSequence... charSequences) {
         driver.findElement(element).clear();
         driver.findElement(element).sendKeys(charSequences);
@@ -32,7 +33,12 @@ public class BasePage {
         driver.findElement(element).click();
     }
 
-    protected void open(){
+    protected void click(WebElement element) {
+        UIElement uiElement = new UIElement(driver, element);
+        uiElement.click();
+    }
+
+    protected void open() {
         driver.get(properties.getProperty("url"));
     }
 

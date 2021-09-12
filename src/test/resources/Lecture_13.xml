@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Welcome to the-internet">
+    <parameter name="env" value="herokuapp"></parameter>
+    <test name="Frames">
+        <classes>
+            <class name="Lecture_12_13.HomePage_Test"/>
+            <class name="Lecture_12_13.Frames_Test"/>
+        </classes>
+    </test>
+</suite>

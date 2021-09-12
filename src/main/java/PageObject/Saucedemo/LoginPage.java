@@ -47,6 +47,13 @@ public class LoginPage extends BasePage {
         return this;
     }
 
+    public LoginPage loginToApplication(User user) {
+        enter(this.username, user.getLogin());
+        enter(this.password, user.getPassword());
+        click(this.loginBtn);
+        return this;
+    }
+
     public LoginPage checkErrorText(String expectedText) {
         Assert.assertEquals(getElementText(errorTxt), expectedText);
         return this;

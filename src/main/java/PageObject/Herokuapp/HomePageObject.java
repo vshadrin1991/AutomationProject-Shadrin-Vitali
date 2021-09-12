@@ -34,7 +34,7 @@ public class HomePageObject extends BasePage {
     }
 
     public HomePageObject clickLink(HomePageLinksEnum homePageLinksEnum) {
-        click(getLink(homePageLinksEnum));
+        click(driver.findElement(getLink(homePageLinksEnum)));
         return this;
     }
 
