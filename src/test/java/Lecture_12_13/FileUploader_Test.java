@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class FileUploader_Test extends BaseTest {
+
     HomePageObject homePageObject;
     FileUploaderObject fileUploaderObject;
 
@@ -22,9 +23,10 @@ public class FileUploader_Test extends BaseTest {
     public void fileUploader_Test() {
         fileUploaderObject
                 .verifyPageTitle("File Uploader")
-                .uploadFile()
-                .clickFileSubmit()
-                .verifyPageTitle("File Uploaded!")
-                .verifyThatFileUploaded("image.jpeg");
+                .dragDropUpload("image.jpeg");
+                //.uploadFile()
+                //.clickFileSubmit()
+                //.verifyPageTitle("File Uploaded!")
+                //.verifyThatFileUploaded("image.jpeg");
     }
 }

@@ -3,7 +3,9 @@ package PageObject;
 import driver.DriverCreation;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import properties.PropertyReader;
@@ -18,8 +20,8 @@ public class BasePage {
 
     protected BasePage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(DriverCreation.getDriver(), 5);
-        actions = new Actions(DriverCreation.getDriver());
+        wait = new WebDriverWait(driver, 5);
+        actions = new Actions(driver);
         properties = PropertyReader.getProperties();
     }
 
@@ -31,6 +33,19 @@ public class BasePage {
     protected void click(By element) {
         driver.findElement(element).click();
     }
+
+    protected void click(WebElement element) {
+        element.click();
+    }
+
+    protected void click(String element) {
+        driver.findElement(By.xpath(element)).click();
+    }
+
+    protected void click(By element, Boolean withScroll) {
+        driver.findElement(element).click();
+    }
+
 
     protected void open(){
         driver.get(properties.getProperty("url"));
