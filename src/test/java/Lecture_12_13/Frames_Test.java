@@ -8,18 +8,17 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class Frames_Test extends BaseTest {
-    HomePageObject homePageObject;
     FramesObject framesObject;
 
     @BeforeClass
     public void precondition() {
-        homePageObject = new HomePageObject(driver);
         framesObject = new FramesObject(driver);
-        homePageObject.clickLink(HomePageLinksEnum.FRAMES);
     }
 
     @Test
     public void frames_Test() {
+        HomePageObject homePageObject =  new HomePageObject(driver);
+        homePageObject.clickLink(HomePageLinksEnum.FRAMES);
         framesObject
                 .verifyPageTitle("Frames")
                 .clickFrameLink("iFrame")

@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import properties.PropertyReader;
@@ -19,9 +18,9 @@ public class BasePage {
     protected Properties properties;
 
     protected BasePage(WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, 5);
-        actions = new Actions(driver);
+        this.driver = DriverCreation.getDriver();
+        wait = new WebDriverWait(DriverCreation.getDriver(), 5);
+        actions = new Actions(DriverCreation.getDriver());
         properties = PropertyReader.getProperties();
     }
 
@@ -47,7 +46,7 @@ public class BasePage {
     }
 
 
-    protected void open(){
+    protected void open() {
         driver.get(properties.getProperty("url"));
     }
 

@@ -43,7 +43,6 @@ public class Lecture_14 {
         data.forEach(System.out::println);
 
 
-
         Collections.sort(data);
         data.forEach(System.out::println);
         Collections.shuffle(data);
@@ -51,6 +50,34 @@ public class Lecture_14 {
 
         List<Integer> data1 = data.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
 
+    }
+
+    @Test
+    public void test2() {
+      //PersonBuilder personBuilder = new PersonBuilder.Builder().withName("User").build();
+      register(new PersonBuilder.Builder().build());
+    }
+
+
+    public void register(String name, Integer age, Integer phoneNumber, Boolean pets) {
+        System.out.println(name);
+        System.out.println(age);
+        System.out.println(phoneNumber);
+        System.out.println(pets);
+    }
+
+    public void register(PersonBuilder user) {
+        System.out.println(user.name);
+        System.out.println(user.sex);
+        System.out.println(user.phoneNumber);
+        System.out.println(user.lastName);
+    }
+
+    public void auth(User user) {
+        System.out.println(user.getName());
+        System.out.println(user.getAge());
+        System.out.println(user.phoneNumber);
+        System.out.println(user.getPets());
     }
 
 }
