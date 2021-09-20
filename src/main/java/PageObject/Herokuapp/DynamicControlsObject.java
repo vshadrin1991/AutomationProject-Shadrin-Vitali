@@ -2,7 +2,6 @@ package PageObject.Herokuapp;
 
 import PageObject.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
@@ -13,10 +12,6 @@ public class DynamicControlsObject extends BasePage {
     private By textBack = By.cssSelector("#checkbox-example>p");
     private By title = By.tagName("h4");
 
-
-    public DynamicControlsObject(WebDriver driver) {
-        super(driver);
-    }
 
     public DynamicControlsObject verifyPageTitle() {
         Assert.assertEquals(getElementText(title), DYNAMIC_CONTROLS.getLinkText());

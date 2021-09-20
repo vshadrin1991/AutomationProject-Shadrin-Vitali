@@ -7,8 +7,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class Lecture_9 extends BaseTest {
-    LoginPage loginPage = new LoginPage(driver);
-    ProductPage productPage = new ProductPage(driver);
+    LoginPage loginPage = new LoginPage();
+    ProductPage productPage = new ProductPage();
 
     @BeforeMethod
     public void precondition() {

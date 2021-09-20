@@ -18,10 +18,9 @@ public class Lecture_11 extends BaseTest {
 
     @BeforeClass
     public void precondition() {
-        loginPage = new LoginPage(driver);
-        productPage = new ProductPage(driver);
-        barMenuPage = new BarMenuPage(driver);
-       // loginPage.openPage();
+        loginPage = new LoginPage();
+        productPage = new ProductPage();
+        barMenuPage = new BarMenuPage();
     }
 
     @Parameters({"username", "password", "error"})

@@ -12,12 +12,12 @@ public class FileUploader_Test extends BaseTest {
 
     @BeforeClass
     public void precondition() {
-        fileUploaderObject = new FileUploaderObject(driver);
+        fileUploaderObject = new FileUploaderObject();
     }
 
     @Test
     public void fileUploader_Test() {
-        HomePageObject homePageObject = new HomePageObject(driver);
+        HomePageObject homePageObject = new HomePageObject();
         homePageObject.clickLink(HomePageLinksEnum.FILE_UPLOADER);
         fileUploaderObject
                 .verifyPageTitle("File Uploader")

@@ -17,12 +17,7 @@ public class LoginPage extends BasePage {
     @FindBy(css = "[data-test=login-button]")
     WebElement loginBtn;
 
-    @FindBy(how = How.ID, using = "test")
-    WebElement webElement;
-
-
     public LoginPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver, LoginPage.class);
     }
 

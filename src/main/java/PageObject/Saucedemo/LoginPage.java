@@ -2,7 +2,6 @@ package PageObject.Saucedemo;
 
 import PageObject.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class LoginPage extends BasePage {
@@ -10,10 +9,6 @@ public class LoginPage extends BasePage {
     private By password = By.cssSelector("[data-test=password]");
     private By loginBtn = By.cssSelector("[data-test=login-button]");
     private By errorTxt = By.cssSelector("[data-test=error]");
-
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
 
     public LoginPage verifyLoginPage() {
         isDisplayed(username, password, loginBtn);

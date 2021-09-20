@@ -2,7 +2,6 @@ package PageObject.Herokuapp;
 
 import PageObject.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class FramesObject extends BasePage {
@@ -17,10 +16,6 @@ public class FramesObject extends BasePage {
     public FramesObject verifyPageTitle(String title) {
         Assert.assertEquals(getElementText(this.title), title);
         return this;
-    }
-
-    public FramesObject(WebDriver driver) {
-        super(driver);
     }
 
     public FramesObject clickFrameLink(String frameLink) {

@@ -2,10 +2,11 @@ package Lecture_10;
 
 import PageObject.Saucedemo.LoginPage;
 import PageObject.Saucedemo.ProductPage;
-import driver.BaseTest;
 import driver.DriverCreation;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 import testng.Listener;
 
 @Listeners({Listener.class})
@@ -21,9 +22,8 @@ public class Lecture_10_3 {
 
     @Test(dataProvider = "user data")
     public void loginToApplicationStandard_Test(String username, String password, String error) {
-        WebDriver driver = DriverCreation.getDriver();
-        LoginPage loginPage = new LoginPage(driver);
-        ProductPage productPage = new ProductPage(driver);
+        LoginPage loginPage = new LoginPage();
+        ProductPage productPage = new ProductPage();
         loginPage.openPage()
                 .verifyLoginPage()
                 .loginToApplication(username, password);

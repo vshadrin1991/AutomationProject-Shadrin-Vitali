@@ -1,7 +1,6 @@
 package Lecture_12_13;
 
 import PageObject.Herokuapp.DynamicControlsObject;
-import PageObject.Herokuapp.HomePageLinksEnum;
 import PageObject.Herokuapp.HomePageObject;
 import driver.BaseTest;
 import org.testng.annotations.BeforeClass;
@@ -14,12 +13,12 @@ public class DynamicControls_Test extends BaseTest {
 
     @BeforeClass
     public void precondition() {
-        dynamicControlsObject = new DynamicControlsObject(driver);
+        dynamicControlsObject = new DynamicControlsObject();
     }
 
     @Test
     public void dynamicControlsObject_Test() {
-        HomePageObject homePageObject =  new HomePageObject(driver);
+        HomePageObject homePageObject = new HomePageObject();
         homePageObject.clickLink(DYNAMIC_CONTROLS);
         dynamicControlsObject.verifyPageTitle().clickRemoveBtn().verifyElementText("It's gone!");
     }

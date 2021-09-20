@@ -2,7 +2,6 @@ package PageObject.Herokuapp;
 
 import PageObject.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 import java.awt.*;
@@ -18,10 +17,6 @@ public class FileUploaderObject extends BasePage {
     private String userDir = System.getProperty("user.dir");
     private By dragDropUpload = By.id("drag-drop-upload");
     private By uploadFileName = By.xpath("//*[@id='drag-drop-upload']//*[@class='dz-filename']//span");
-
-    public FileUploaderObject(WebDriver driver) {
-        super(driver);
-    }
 
     public FileUploaderObject verifyPageTitle(String title) {
         Assert.assertEquals(getElementText(this.title), title);
@@ -43,7 +38,7 @@ public class FileUploaderObject extends BasePage {
         return this;
     }
 
-    public FileUploaderObject dragDropUpload(String imgName){
+    public FileUploaderObject dragDropUpload(String imgName) {
         click(dragDropUpload);
         pause(1);
         StringSelection stringSelection = new StringSelection(userDir + "\\files\\" + imgName);

@@ -10,9 +10,8 @@ public class HomePage_Test extends BaseTest {
 
     @BeforeClass
     public void precondition() {
-        homePageObject = new HomePageObject(driver);
+        homePageObject = new HomePageObject();
     }
-
 
     @Test
     public void verifyHomePageObject_Test() {

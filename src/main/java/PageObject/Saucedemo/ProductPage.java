@@ -2,7 +2,7 @@ package PageObject.Saucedemo;
 
 import PageObject.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.util.List;
@@ -14,18 +14,14 @@ public class ProductPage extends BasePage {
     private By filter = By.tagName("select");
     private By products = By.cssSelector(".inventory_item_name");
 
-    public ProductPage(WebDriver driver) {
-        super(driver);
-    }
-
     public ProductPage verifyProductPage() {
         isDisplayed(title, logo, filter);
         return this;
     }
 
     public ProductPage verifyProductsListSorted() {
-        List<String> expectedData = driver.findElements(products).stream().map(data -> data.getText()).sorted().collect(Collectors.toList());
-        List<String> actualData = driver.findElements(products).stream().map(data -> data.getText()).collect(Collectors.toList());
+        List<String> expectedData = driver.findElements(products).stream().map(WebElement::getText).sorted().collect(Collectors.toList());
+        List<String> actualData = driver.findElements(products).stream().map(WebElement::getText).collect(Collectors.toList());
         Assert.assertEquals(expectedData, actualData);
         return this;
     }
