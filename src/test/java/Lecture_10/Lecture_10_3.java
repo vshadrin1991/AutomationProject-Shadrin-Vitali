@@ -22,8 +22,8 @@ public class Lecture_10_3 {
     @Test(dataProvider = "user data")
     public void loginToApplicationStandard_Test(String username, String password, String error) {
         WebDriver driver = DriverCreation.getDriver();
-        LoginPage loginPage = new LoginPage(driver);
-        ProductPage productPage = new ProductPage(driver);
+        LoginPage loginPage = new LoginPage();
+        ProductPage productPage = new ProductPage();
         loginPage.openPage()
                 .verifyLoginPage()
                 .loginToApplication(username, password);

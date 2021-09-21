@@ -19,10 +19,6 @@ public class FileUploaderObject extends BasePage {
     private By dragDropUpload = By.id("drag-drop-upload");
     private By uploadFileName = By.xpath("//*[@id='drag-drop-upload']//*[@class='dz-filename']//span");
 
-    public FileUploaderObject(WebDriver driver) {
-        super(driver);
-    }
-
     public FileUploaderObject verifyPageTitle(String title) {
         Assert.assertEquals(getElementText(this.title), title);
         return this;

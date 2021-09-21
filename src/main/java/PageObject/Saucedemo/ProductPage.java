@@ -14,10 +14,6 @@ public class ProductPage extends BasePage {
     private By filter = By.tagName("select");
     private By products = By.cssSelector(".inventory_item_name");
 
-    public ProductPage(WebDriver driver) {
-        super(driver);
-    }
-
     public ProductPage verifyProductPage() {
         isDisplayed(title, logo, filter);
         return this;

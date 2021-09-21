@@ -12,12 +12,12 @@ public class Frames_Test extends BaseTest {
 
     @BeforeClass
     public void precondition() {
-        framesObject = new FramesObject(driver);
+        framesObject = new FramesObject();
     }
 
     @Test
     public void frames_Test() {
-        HomePageObject homePageObject =  new HomePageObject(driver);
+        HomePageObject homePageObject =  new HomePageObject();
         homePageObject.clickLink(HomePageLinksEnum.FRAMES);
         framesObject
                 .verifyPageTitle("Frames")

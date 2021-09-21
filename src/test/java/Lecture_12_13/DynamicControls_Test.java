@@ -14,12 +14,12 @@ public class DynamicControls_Test extends BaseTest {
 
     @BeforeClass
     public void precondition() {
-        dynamicControlsObject = new DynamicControlsObject(driver);
+        dynamicControlsObject = new DynamicControlsObject();
     }
 
     @Test
     public void dynamicControlsObject_Test() {
-        HomePageObject homePageObject =  new HomePageObject(driver);
+        HomePageObject homePageObject =  new HomePageObject();
         homePageObject.clickLink(DYNAMIC_CONTROLS);
         dynamicControlsObject.verifyPageTitle().clickRemoveBtn().verifyElementText("It's gone!");
     }

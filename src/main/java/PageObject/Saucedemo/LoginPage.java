@@ -1,19 +1,18 @@
 package PageObject.Saucedemo;
 
 import PageObject.BasePage;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+
+@Log4j2
 public class LoginPage extends BasePage {
     private By username = By.cssSelector("[data-test=username]");
     private By password = By.cssSelector("[data-test=password]");
     private By loginBtn = By.cssSelector("[data-test=login-button]");
     private By errorTxt = By.cssSelector("[data-test=error]");
-
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
 
     public LoginPage verifyLoginPage() {
         isDisplayed(username, password, loginBtn);

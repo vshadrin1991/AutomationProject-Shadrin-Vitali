@@ -14,12 +14,12 @@ public class ContextMenu_Test extends BaseTest {
 
     @BeforeClass
     public void precondition() {
-        contextMenuObject = new ContextMenuObject(driver);
+        contextMenuObject = new ContextMenuObject();
     }
 
     @Test
     public void contextMenuObject_Test() {
-        HomePageObject homePageObject =  new HomePageObject(driver);
+        HomePageObject homePageObject =  new HomePageObject();
         homePageObject.clickLink(HomePageLinksEnum.CONTEXT_MENU);
         contextMenuObject
                 .verifyPageTitle()

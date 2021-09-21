@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Welcome to the-internet" parallel="tests">
-    <parameter name="env" value="herokuapp"></parameter>
+    <parameter name="env" value="herokuapp"/>
+    
     <test name="Context Menu">
         <classes>
             <class name="Lecture_12_13.HomePage_Test"/>
@@ -16,7 +17,7 @@
         </classes>
     </test>
 
-    <test name="File Uploader">
+    <test name="File Uploader" enabled="false">
         <classes>
             <class name="Lecture_12_13.HomePage_Test"/>
             <class name="Lecture_12_13.FileUploader_Test"/>

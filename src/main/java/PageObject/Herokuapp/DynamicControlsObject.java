@@ -13,11 +13,6 @@ public class DynamicControlsObject extends BasePage {
     private By textBack = By.cssSelector("#checkbox-example>p");
     private By title = By.tagName("h4");
 
-
-    public DynamicControlsObject(WebDriver driver) {
-        super(driver);
-    }
-
     public DynamicControlsObject verifyPageTitle() {
         Assert.assertEquals(getElementText(title), DYNAMIC_CONTROLS.getLinkText());
         return this;
