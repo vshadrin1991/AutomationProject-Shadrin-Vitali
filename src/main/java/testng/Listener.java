@@ -16,7 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Comparator;
 
-import static driver.DriverCreation.*;
+import static driver.DriverCreation.getDriver;
 
 
 public class Listener implements ITestListener {
@@ -31,12 +31,15 @@ public class Listener implements ITestListener {
     public void onStart(ITestContext context) {
         PropertyReader propertyReader = new PropertyReader();
         propertyReader.setProperties(context.getSuite().getParameter("env"));
+        DriverCreation.setDriver(context.getSuite().getParameter("browser"), propertyReader);
         Path path = Paths.get("allure-results");
         try {
-            Files.walk(path)
-                    .sorted(Comparator.reverseOrder())
-                    .map(Path::toFile)
-                    .forEach(File::delete);
+            if (Files.exists(path)) {
+                Files.walk(path)
+                        .sorted(Comparator.reverseOrder())
+                        .map(Path::toFile)
+                        .forEach(File::delete);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -48,7 +51,7 @@ public class Listener implements ITestListener {
     }
 
     @Attachment(value = "Screenshots", type = "image/png")
-    private byte[] saveScreenshots(byte[] s){
+    private byte[] saveScreenshots(byte[] s) {
         return s;
     }
 

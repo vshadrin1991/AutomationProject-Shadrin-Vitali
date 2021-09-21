@@ -55,6 +55,7 @@ public class FileUploaderObject extends BasePage {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        pause(3);
         Assert.assertEquals(getElementText(uploadFileName), imgName);
         return this;
     }
