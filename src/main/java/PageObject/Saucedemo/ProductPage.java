@@ -2,7 +2,6 @@ package PageObject.Saucedemo;
 
 import PageObject.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 import java.util.List;
@@ -20,8 +19,8 @@ public class ProductPage extends BasePage {
     }
 
     public ProductPage verifyProductsListSorted() {
-        List<String> expectedData = driver.findElements(products).stream().map(data -> data.getText()).sorted().collect(Collectors.toList());
         List<String> actualData = driver.findElements(products).stream().map(data -> data.getText()).collect(Collectors.toList());
+        List<String> expectedData = actualData.stream().sorted().collect(Collectors.toList());
         Assert.assertEquals(expectedData, actualData);
         return this;
     }

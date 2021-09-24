@@ -31,7 +31,7 @@ public class Listener implements ITestListener {
     @Override
     public void onStart(ITestContext context) {
         PropertyReader propertyReader = new PropertyReader();
-        propertyReader.setProperties(context.getSuite().getParameter("env"));
+        propertyReader.setProperties(context.getSuite().getParameter("env") == null ? System.getProperties().getProperty("env") : context.getSuite().getParameter("env"));
         setDriver();
         Path path = Paths.get("allure-results");
         try {
