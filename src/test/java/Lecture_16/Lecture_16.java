@@ -3,6 +3,7 @@ package Lecture_16;
 import lombok.extern.log4j.Log4j2;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pojo.Pet;
 
 @Log4j2
 public class Lecture_16 {
@@ -29,7 +30,7 @@ public class Lecture_16 {
 
     @Test
     public void test3() {
-        Pet pet = new Pet.PetBuilder().name("Charli").age(10).type("Pug").build();
+        Pet pet = Pet.builder().build();
         log.info(pet);
     }
 }

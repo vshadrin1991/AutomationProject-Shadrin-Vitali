@@ -1,4 +1,4 @@
-package Lecture_16;
+package pojo;
 
 
 import lombok.Builder;

@@ -7,10 +7,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import properties.PropertyReader;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.concurrent.TimeUnit;
 /*
     Patten Singleton
  */
@@ -18,28 +14,24 @@ import java.util.concurrent.TimeUnit;
 public class DriverCreation {
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-    public static void setDriver(String browserType) {
+    public static void setDriver() {
         if (driver.get() == null) {
-            createDriver(browserType);
+            createDriver();
         }
     }
 
-    private static void createDriver(String browserType) {
-        switch (browserType) {
-            case "Chrome":
-                WebDriverManager.chromedriver().setup();
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments(PropertyReader.getProperties().getProperty("chrome.driver.options").split(";"));
-                driver.set(new ChromeDriver(chromeOptions));
-                break;
-            case "Mozilla":
-                WebDriverManager.firefoxdriver().setup();
-                driver.set(new FirefoxDriver());
-                break;
-            case "IE":
-                WebDriverManager.iedriver().setup();
-                driver.set(new InternetExplorerDriver());
-                break;
+    private static void createDriver() {
+        if (PropertyReader.getProperties().containsKey("chrome")) {
+            WebDriverManager.chromedriver().setup();
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.addArguments(PropertyReader.getProperties().getProperty("chrome").split(";"));
+            driver.set(new ChromeDriver(chromeOptions));
+        } else if (PropertyReader.getProperties().containsKey("mozilla")) {
+            WebDriverManager.firefoxdriver().setup();
+            driver.set(new FirefoxDriver());
+        } else {
+            WebDriverManager.iedriver().setup();
+            driver.set(new InternetExplorerDriver());
         }
     }
 
