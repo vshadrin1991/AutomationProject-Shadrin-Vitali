@@ -1,4 +1,4 @@
-package compe;
+package comparator;
 
 public class Person {
     String name;

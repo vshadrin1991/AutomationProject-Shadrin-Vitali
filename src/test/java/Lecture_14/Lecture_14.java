@@ -1,7 +1,7 @@
 package Lecture_14;
 
-import compe.Person;
-import compe.Sort;
+import comparator.Person;
+import comparator.Sort;
 import org.testng.annotations.Test;
 
 import java.util.*;
