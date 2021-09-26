@@ -32,7 +32,7 @@ public class Listener implements ITestListener {
     public void onStart(ITestContext context) {
         PropertyReader propertyReader = new PropertyReader();
         propertyReader.setProperties(context.getSuite().getParameter("env") == null ? System.getProperties().getProperty("env") : context.getSuite().getParameter("env"));
-        setDriver();
+        //setDriver();
         Path path = Paths.get("allure-results");
         try {
             if (Files.exists(path)) {
@@ -55,6 +55,4 @@ public class Listener implements ITestListener {
     private byte[] saveScreenshots(byte[] s) {
         return s;
     }
-
-
 }

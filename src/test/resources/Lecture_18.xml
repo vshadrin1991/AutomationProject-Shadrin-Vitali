@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Mood panda">
+<suite name="Mood panda" parallel="tests">
     <parameter name="env" value="moodpanda"/>
+
+    <test name="Simple test">
+        <classes>
+            <class name="Lecture_18.SelenideSimple_Tests"/>
+        </classes>
+    </test>
     
-    <test name="Home page">
+    <test name="Home page tests" enabled="false">
         <classes>
             <class name="Lecture_18.MoodPanda_Tests"/>
         </classes>

@@ -2,9 +2,11 @@ package SelenidePages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+@Log4j2
 public class HomePage {
     @FindBy(how = How.ID, using = "page-top")
     SelenideElement pageTop;
