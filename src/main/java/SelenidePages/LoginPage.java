@@ -12,7 +12,7 @@ import java.util.Arrays;
 import static properties.PropertyReader.getProperties;
 
 @Log4j2
-public class LoginPage {
+public class LoginPage extends SelenideBasePage<LoginPage> {
 
     @FindBy(id = "ContentPlaceHolderContent_ButtonLogin")
     SelenideElement loginBtn;
@@ -32,7 +32,7 @@ public class LoginPage {
         Arrays.asList(loginBtn, email, password, createAccountBtn).forEach(el ->
                 el.shouldBe(Condition.exist)
         );
-        return this;
+        return me();
     }
 
     public LoginPage enterEmail(String email) {

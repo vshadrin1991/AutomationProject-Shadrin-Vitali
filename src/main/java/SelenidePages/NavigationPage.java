@@ -8,13 +8,13 @@ import static com.codeborne.selenide.Selenide.$;
 @Log4j2
 public class NavigationPage {
 
-    SelenideElement getLink(String text) {
-        return $(By.linkText(text));
+    SelenideElement getLink(NavigationEnum navigationEnum) {
+        return $(By.linkText(navigationEnum.getMenu()));
     }
 
-    public NavigationPage click(String text) {
-        log.info("Click on link :: " + text);
-        getLink(text).click();
+    public NavigationPage click(NavigationEnum navigationEnum) {
+        log.info("Click on link :: " + navigationEnum);
+        getLink(navigationEnum).click();
         return this;
     }
 }

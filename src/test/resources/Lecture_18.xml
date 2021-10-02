@@ -3,13 +3,13 @@
 <suite name="Mood panda" parallel="tests">
     <parameter name="env" value="moodpanda"/>
 
-    <test name="Simple test">
+    <test name="Simple test"  enabled="false">
         <classes>
             <class name="Lecture_18.SelenideSimple_Tests"/>
         </classes>
     </test>
     
-    <test name="Home page tests" enabled="false">
+    <test name="Home page tests">
         <classes>
             <class name="Lecture_18.MoodPanda_Tests"/>
         </classes>

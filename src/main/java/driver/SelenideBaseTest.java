@@ -11,12 +11,14 @@ import static com.codeborne.selenide.WebDriverRunner.driver;
 
 public class SelenideBaseTest {
     private PropertyReader propertyReader;
+    private SelenideConfigurations selenideConfigurations;
 
     @BeforeTest(alwaysRun = true)
     protected void startTest(ITestContext context) {
         this.propertyReader = new PropertyReader();
         this.propertyReader.setProperties(context.getSuite().getParameter("env") == null ?
                 System.getProperties().getProperty("env") : context.getSuite().getParameter("env"));
+        this.selenideConfigurations = new SelenideConfigurations(this.propertyReader);
     }
 
     protected <T> T get(Class<T> pageClass) {

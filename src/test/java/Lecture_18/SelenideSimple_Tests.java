@@ -1,5 +1,6 @@
 package Lecture_18;
 
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
@@ -19,7 +20,10 @@ public class SelenideSimple_Tests {
         open("https://moodpanda.com/");
         $(By.id("page-top")).shouldBe(exist);
         $(".scroll-down > .btn.page-scroll ").click();
-        List<String> data = $("#bs-example-navbar-collapse-1").findAll(byXpath("ul//li//a")).stream().map(el -> el.getText()).collect(Collectors.toList());
+        List<String> data = $("#bs-example-navbar-collapse-1")
+                .findAll(byXpath("ul//li//a")).stream().map(SelenideElement::getText)
+                .filter(el -> !el.isEmpty())
+                .collect(Collectors.toList());
         System.out.println(data);
     }
 
