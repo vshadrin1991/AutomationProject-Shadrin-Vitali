@@ -1,5 +1,7 @@
 package Lecture_18;
 
+import SelenidePages.HomePage;
+import SelenidePages.LoginPage;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.testng.annotations.AfterTest;
@@ -18,6 +20,7 @@ public class SelenideSimple_Tests {
     @Test
     public void test1() {
         open("https://moodpanda.com/");
+        page(HomePage.class).verifyHomePage();
         $(By.id("page-top")).shouldBe(exist);
         $(".scroll-down > .btn.page-scroll ").click();
         List<String> data = $("#bs-example-navbar-collapse-1")
