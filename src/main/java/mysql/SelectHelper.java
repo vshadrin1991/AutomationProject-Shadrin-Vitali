@@ -2,27 +2,18 @@ package mysql;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SelectHelper {
+public class SelectHelper extends DBConnector<SelectHelper> {
     private String select;
     private String from;
     private String where;
-    private static SelectHelper selectHelper;
 
     public static SelectHelper getSelect() {
-        if (selectHelper == null) {
-            selectHelper = new SelectHelper();
-        }
-        return selectHelper;
-    }
-
-    public static void reset() {
-        selectHelper = new SelectHelper();
+        return new SelectHelper();
     }
 
     public SelectHelper select(String select) {
@@ -40,10 +31,16 @@ public class SelectHelper {
         return this;
     }
 
+    @Override
+    public SelectHelper execute() {
+        executeQuery("select " + this.select + " from " + this.from + (this.where == null ? "" : " where " + this.where));
+        return this;
+    }
+
     public List<List<String>> getListData() {
         List<List<String>> data = new ArrayList<>();
         try {
-            ResultSet resultSet = resultSet();
+            ResultSet resultSet = getResultSet();
             while (resultSet.next()) {
                 List<String> row = new ArrayList<>();
                 for (int i = 1; i <= resultSet.getMetaData().getColumnCount(); i++) {
@@ -57,12 +54,11 @@ public class SelectHelper {
         return data;
     }
 
-
     public Map<String, List<String>> getMapData() {
         Map<String, List<String>> data = new HashMap<>();
         List<List<String>> listData = getListData();
+        ResultSet resultSet = getResultSet();
         try {
-            ResultSet resultSet = resultSet();
             List<String> titles = new ArrayList<>();
             ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
             for (int i = 1; i <= resultSetMetaData.getColumnCount(); i++) {
@@ -70,8 +66,8 @@ public class SelectHelper {
             }
             for (int i = 0; i < titles.size(); i++) {
                 List<String> column = new ArrayList<>();
-                for (int j = 0; j < listData.size(); j++) {
-                    column.add(listData.get(j).get(i));
+                for (List<String> listDatum : listData) {
+                    column.add(listDatum.get(i));
                 }
                 data.put(titles.get(i), column);
             }
@@ -80,18 +76,5 @@ public class SelectHelper {
             e.printStackTrace();
         }
         return data;
-    }
-
-    public ResultSet resultSet() {
-        try {
-            ResultSet resultSet =
-                    new MySqlReader().statement()
-                            .executeQuery("select " + this.select + " from " + this.from + (this.where == null ? "" : " where " + this.where));
-            reset();
-            return resultSet;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }
