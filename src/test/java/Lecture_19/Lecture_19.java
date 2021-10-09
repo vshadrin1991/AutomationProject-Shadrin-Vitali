@@ -18,7 +18,7 @@ public class Lecture_19 {
     }
 
 
-    //@Test
+    @Test
     public void test2() throws Exception {
         Connection connection = DriverManager.getConnection("jdbc:mysql://db4free.net/testqa07?user=testqa07&password=testqa07");
         Statement statement = connection.createStatement();
