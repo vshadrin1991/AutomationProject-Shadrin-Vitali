@@ -30,7 +30,7 @@ jobs:
           path: target/surefire-reports/junitreports
           when: always
       - store_artifacts:
-          path: allure-report/
+          path: target/site/allure-maven-plugin/
 workflows:
   version: 2
   commit:
