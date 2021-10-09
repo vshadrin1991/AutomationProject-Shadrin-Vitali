@@ -66,7 +66,7 @@ public class Lecture_8 extends BaseTest {
         }
         data.forEach((k, v) -> System.out.println(k + " -> " + v));
 
-        Map<String, List<String>> data1 = new HashMap<>() {{
+        Map<String, List<String>> data1 = new HashMap<String, List<String>>() {{
             List<WebElement> heads = driver.findElements(By.xpath("//table//th"));
             for (int index = 0; index < heads.size(); index++) {
                 List<WebElement> columns = driver.findElements(By.xpath("//table//tr//following::tr//td[" + (index + 1) + "]"));

@@ -19,7 +19,7 @@ public class Lecture_14 {
         Person person6 = new Person("Person 6", 30);
         Person person7 = new Person("Person 7", 33);
 
-        List<Person> people = new ArrayList<>() {{
+        List<Person> people = new ArrayList<Person>() {{
             add(person1);
             add(person2);
             add(person3);
@@ -36,7 +36,7 @@ public class Lecture_14 {
 
     @Test
     public void test1() {
-        List<Integer> data = new ArrayList<>() {{
+        List<Integer> data = new ArrayList<Integer>() {{
             addAll(Arrays.asList(1, 3, 5, 11, 4, 3, 2, 1, 5, 67, 8));
         }};
         data.sort(Comparator.reverseOrder());

@@ -14,7 +14,7 @@ public class Lecture_19 {
 
     @Test
     public void test1() throws Exception {
-        Assert.assertEquals(getSelect().select("*").from("user").where("id in (1)").getMapData().get("id").get(0), "1");
+        Assert.assertEquals(getSelect().select("*").from("user").where("id in (3)").getMapData().get("id").get(0), "3");
     }
 
 
