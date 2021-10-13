@@ -11,17 +11,9 @@ public class SelectHelper extends DBConnector {
     private String select;
     private String from;
     private String where;
-    private static SelectHelper selectHelper;
 
     public static SelectHelper getSelect() {
-        if (selectHelper == null) {
-            selectHelper = new SelectHelper();
-        }
-        return selectHelper;
-    }
-
-    public static void reset() {
-        selectHelper = new SelectHelper();
+        return new SelectHelper();
     }
 
     public SelectHelper select(String select) {
@@ -44,8 +36,6 @@ public class SelectHelper extends DBConnector {
             return getStatement().executeQuery("select " + select + " from " + from + (where == null ? "" : " where " + where));
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            reset();
         }
         return null;
     }
