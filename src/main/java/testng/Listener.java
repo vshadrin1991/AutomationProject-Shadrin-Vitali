@@ -1,6 +1,7 @@
 package testng;
 
 import driver.DriverCreation;
+import driver.SelenideConfigurations;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -17,7 +18,6 @@ import java.nio.file.Paths;
 import java.util.Comparator;
 
 import static driver.DriverCreation.getDriver;
-import static driver.DriverCreation.setDriver;
 
 
 public class Listener implements ITestListener {
@@ -32,18 +32,8 @@ public class Listener implements ITestListener {
     public void onStart(ITestContext context) {
         PropertyReader propertyReader = new PropertyReader();
         propertyReader.setProperties(context.getSuite().getParameter("env") == null ? System.getProperties().getProperty("env") : context.getSuite().getParameter("env"));
-        setDriver();
-        Path path = Paths.get("allure-results");
-        try {
-            if (Files.exists(path)) {
-                Files.walk(path)
-                        .sorted(Comparator.reverseOrder())
-                        .map(Path::toFile)
-                        .forEach(File::delete);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        new SelenideConfigurations(propertyReader);
+        clearTestsResults();
     }
 
     @Override
@@ -57,4 +47,17 @@ public class Listener implements ITestListener {
     }
 
 
+    private void clearTestsResults() {
+        Path path = Paths.get("allure-results");
+        try {
+            if (Files.exists(path)) {
+                Files.walk(path)
+                        .sorted(Comparator.reverseOrder())
+                        .map(Path::toFile)
+                        .forEach(File::delete);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
