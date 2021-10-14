@@ -13,5 +13,20 @@ pipeline {
                 bat 'mvn clean test -Dsuite="src/test/resources/Lecture_18.xml"'
             }
         }
+
+        stage('reports') {
+            steps {
+                script { 
+                    allure([
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: 'target/allure-results']]
+                    ])}
+               }
+        }
     }
+
+
 }
