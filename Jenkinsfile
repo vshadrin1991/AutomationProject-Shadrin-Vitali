@@ -7,14 +7,14 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Test run') {
             steps {
                 // Run Maven on a Unix agent.
                 bat 'mvn clean test -Dsuite="src/test/resources/Lecture_18.xml"'
             }
         }
 
-        stage('Reports') {
+        /* stage('Reports') {
             steps {
                 script {
                     allure([
@@ -25,6 +25,6 @@ pipeline {
                         results: [[path: 'target/allure-results']]
                     ])}
                }
-        }
+        } */
     }
 }
