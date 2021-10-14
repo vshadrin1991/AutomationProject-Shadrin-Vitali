@@ -9,9 +9,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Get some code from a GitHub repository
-                cleanWs()
-                git branch: 'main', credentialsId: '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', url:'https://github.com/vshadrin1991/AutomationProject-Shadrin-Vitali.git'
                 // Run Maven on a Unix agent.
                 bat 'mvn clean test -Dsuite="src/test/resources/Lecture_18.xml"'
             }
