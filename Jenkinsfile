@@ -7,7 +7,7 @@ pipeline {
     }
 
     environment {
-        TEST_XML = ${param.TEST}
+        TEST_XML = "${params.TEST}"
     }
 
     stages {
