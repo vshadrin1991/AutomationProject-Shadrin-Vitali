@@ -6,11 +6,15 @@ pipeline {
         maven "M3"
     }
 
+    environment {
+        TEST_XML = ${param.TEST}
+    }
+
     stages {
         stage('Test run') {
             steps {
                 // Run Maven on a Unix agent.
-                bat 'mvn clean test -Dsuite="src/test/resources/Lecture_18.xml"'
+                bat 'mvn clean test -Dsuite="${TEST_XML}"'
             }
         }
 
