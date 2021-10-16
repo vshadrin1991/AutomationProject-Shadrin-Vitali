@@ -1,5 +1,6 @@
 package testng;
 
+import com.codeborne.selenide.Selenide;
 import driver.DriverCreation;
 import driver.SelenideConfigurations;
 import io.qameta.allure.Attachment;
@@ -24,7 +25,7 @@ public class Listener implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        byte[] file = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
+        byte[] file = ((TakesScreenshot) Selenide.webdriver().driver()).getScreenshotAs(OutputType.BYTES);
         saveScreenshots(file);
     }
 
