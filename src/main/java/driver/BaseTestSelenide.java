@@ -1,8 +1,6 @@
 package driver;
 
 import lombok.extern.log4j.Log4j2;
-import org.testng.ITestContext;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import properties.PropertyReader;
 import testng.Listener;

@@ -21,6 +21,13 @@ public class SelenideConfigurations {
         properties.forEach((property, value) -> {
             Configuration.browserSize = property.equals("browserSize") ? value : Configuration.browserSize;
             Configuration.headless = property.equals("headless") ? Boolean.parseBoolean(value) : Configuration.headless;
+            Configuration.baseUrl = property.equals("baseUrl") ? value : Configuration.baseUrl;
         });
     }
 }
+
+
+//selenide.configs=browserSize=1920x1440:headless=false
+//browserSize=1920x1440:headless=false
+//[browserSize=1920x1440, headless=false]
+//MAP browserSize=1920x1440, headless=false
