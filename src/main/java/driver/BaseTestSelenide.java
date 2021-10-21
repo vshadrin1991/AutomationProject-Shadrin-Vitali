@@ -16,4 +16,8 @@ public class BaseTestSelenide {
     public <PageObjectClass> PageObjectClass get(Class<PageObjectClass> pageObjectClassClass) {
         return driver().hasWebDriverStarted() ? page(pageObjectClassClass) : open(PropertyReader.getProperties().getProperty("url"), pageObjectClassClass);
     }
+
+    public <PageObjectClass> PageObjectClass get(Class<PageObjectClass> pageObjectClassClass, String url) {
+        return driver().hasWebDriverStarted() ? page(pageObjectClassClass) : open(url, pageObjectClassClass);
+    }
 }

@@ -12,7 +12,7 @@ public class Lecture_19 {
 
     @Test(priority = 1)
     public void selectTest() {
-        getSelect().select("*").from("user").getListData().forEach(System.out::println);
+        getSelect().select("*").from("user").execute();
     }
 
     @Test(priority = 2)

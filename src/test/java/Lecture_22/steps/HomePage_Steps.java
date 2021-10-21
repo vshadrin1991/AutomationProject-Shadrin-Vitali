@@ -7,6 +7,11 @@ import io.cucumber.java.en.When;
 
 public class HomePage_Steps extends BaseTestSelenide {
 
+    @When("load page {string}")
+    public void loadPage(String url){
+        get(HomePage.class, url);
+    }
+
     @When("page open")
     public void openPage(){
         get(HomePage.class);

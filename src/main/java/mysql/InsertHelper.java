@@ -1,6 +1,8 @@
 package mysql;
 
-public class InsertHelper extends DBConnector {
+import java.sql.ResultSet;
+
+public class InsertHelper extends DBConnector implements MySqlHelper{
     private String table;
     private String into;
     private String values;
@@ -24,11 +26,17 @@ public class InsertHelper extends DBConnector {
         return this;
     }
 
+    @Override
     public void execute() {
         try {
             getStatement().executeUpdate("INSERT INTO " + table + " ( " + into + " )" + " VALUES " + "( " + values + ")");
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public ResultSet resultSet() {
+        return null;
     }
 }

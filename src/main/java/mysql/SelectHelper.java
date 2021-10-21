@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SelectHelper extends DBConnector {
+public class SelectHelper extends DBConnector implements MySqlHelper {
     private String select;
     private String from;
     private String where;
@@ -31,6 +31,12 @@ public class SelectHelper extends DBConnector {
         return this;
     }
 
+    @Override
+    public void execute() {
+        resultSet();
+    }
+
+    @Override
     public ResultSet resultSet() {
         try {
             return getStatement().executeQuery("select " + select + " from " + from + (where == null ? "" : " where " + where));
