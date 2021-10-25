@@ -15,7 +15,7 @@ public class TestimonialsPage_Steps extends BaseTestSelenide {
     }
 
     @Then("verify testimonials page texts {string}")
-    public void verifyTestimonialsPage(String text) {
+    public void verifyTestimonialsPage(String text)  {
         get(TestimonialsPage.class)
                 .verifyContentText(text);
     }

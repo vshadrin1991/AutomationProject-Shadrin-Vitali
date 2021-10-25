@@ -31,7 +31,8 @@ public class SelectHelper extends DBConnector {
         return this;
     }
 
-    public ResultSet resultSet() {
+    @Override
+    public ResultSet execute() {
         try {
             return getStatement().executeQuery("select " + select + " from " + from + (where == null ? "" : " where " + where));
         } catch (Exception e) {
@@ -44,7 +45,7 @@ public class SelectHelper extends DBConnector {
         Map<String, List<String>> data = new HashMap<>();
         List<List<String>> listData = getListData();
         try {
-            ResultSet resultSet = resultSet();
+            ResultSet resultSet = execute();
             ResultSetMetaData metaData = resultSet.getMetaData();
             List<String> titles = new ArrayList<>();
             for (int i = 1; i <= metaData.getColumnCount(); i++) {
@@ -66,7 +67,7 @@ public class SelectHelper extends DBConnector {
     public List<List<String>> getListData() {
         List<List<String>> data = new ArrayList<>();
         try {
-            ResultSet resultSet = resultSet();
+            ResultSet resultSet = execute();
             while (resultSet.next()) {
                 List<String> row = new ArrayList<>();
                 for (int i = 1; i <= resultSet.getMetaData().getColumnCount(); i++) {

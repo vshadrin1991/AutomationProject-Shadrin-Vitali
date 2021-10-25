@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class MoodPanda_Test extends BaseTestSelenide {
 
     @Test
-    public void verifyHomePage_Test() {
+    public void verifyHomePage_Test(){
         get(HomePage.class)
                 .checkBrandNameSubtext()
                 .checkImage();

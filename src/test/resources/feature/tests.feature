@@ -1,6 +1,6 @@
 Feature: Test
   Scenario: Check home page
-    When page open
+    When i load page "moodpanda"
     Then check mood panda home page is open
   Scenario: Check testimonials page
     When click scroll down button

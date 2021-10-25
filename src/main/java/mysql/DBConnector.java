@@ -6,8 +6,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
-public class DBConnector {
+public abstract class DBConnector<Type> {
     private static Connection connection;
+
+    public abstract Type execute();
 
     public Connection getConnection() {
         try {

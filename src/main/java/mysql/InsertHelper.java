@@ -24,11 +24,13 @@ public class InsertHelper extends DBConnector {
         return this;
     }
 
-    public void execute() {
+    @Override
+    public InsertHelper execute() {
         try {
             getStatement().executeUpdate("INSERT INTO " + table + " ( " + into + " )" + " VALUES " + "( " + values + ")");
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return this;
     }
 }
